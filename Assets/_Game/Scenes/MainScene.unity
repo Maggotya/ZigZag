@@ -196,17 +196,17 @@ PrefabInstance:
     - target: {fileID: 2010833558953859684, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.22376062
+      value: -0.22376059
       objectReference: {fileID: 0}
     - target: {fileID: 2010833558953859684, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10621383
+      value: 0.1062138
       objectReference: {fileID: 0}
     - target: {fileID: 2010833558953859684, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.024538925
+      value: -0.024538914
       objectReference: {fileID: 0}
     - target: {fileID: 2010833558953859684, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
@@ -232,6 +232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: far clip plane
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010833558953860507, guid: b547e090255a5fd47936d9e00ec1c390,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2010833559221810885, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
@@ -466,17 +471,17 @@ PrefabInstance:
     - target: {fileID: 5594850407930972883, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.22376062
+      value: -0.22376059
       objectReference: {fileID: 0}
     - target: {fileID: 5594850407930972883, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.10621383
+      value: 0.1062138
       objectReference: {fileID: 0}
     - target: {fileID: 5594850407930972883, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.024538925
+      value: -0.024538914
       objectReference: {fileID: 0}
     - target: {fileID: 5594850407930972883, guid: b547e090255a5fd47936d9e00ec1c390,
         type: 3}

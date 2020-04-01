@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets._Game.Scripts.Game.Objects.Interfaces;
+using UnityEngine;
 
 namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Changer
 {
-    interface IDirectionChanger
+    interface IDirectionChanger : IResetable
     {
         Vector3 currentDirection { get; }
 

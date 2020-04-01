@@ -2,7 +2,7 @@
 
 namespace Assets._Game.Scripts.Game.Objects.Ball
 {
-    interface IBall : IGameObjectHost, IMovable, IDirected, IPlacedOnSurface
+    interface IBall : IGameObjectHost, IMovable, IDirected, IPlacedOnSurface, IResetable
     {
     }
 }

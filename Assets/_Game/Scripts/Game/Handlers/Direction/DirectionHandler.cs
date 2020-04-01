@@ -43,6 +43,9 @@ namespace Assets._Game.Scripts.Game.Handlers.Direction
             _counter.Dicrease();
             return current;
         }
+
+        public void Reset()
+            => _counter.Reset();
         #endregion // PUBLIC_METHODS
 
         #region PRIVATE_METHODS

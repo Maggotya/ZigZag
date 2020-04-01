@@ -24,6 +24,9 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
         //////////////////////////////////////////////
 
         #region MONO_BEHAVIOUR
+        private void Start()
+            => CacheValues();
+
         private void FixedUpdate()
         {
             if (canMove && moving)
@@ -77,7 +80,40 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
             var halfBallSize = transform.localScale / 2f;
             transform.position = positionOnSurface + Vector3.Scale(Vector3.up, halfBallSize);
         }
+
+        public void Reset()
+        {
+            _speedHandler.Reset();
+            _directionsHandler.Reset();
+
+            ResetFromCache();
+        }
         #endregion // PUBLIC_METHODS
+
+        #region CACHING
+        private Vector3 _initialPositionCache { get; set; }
+        private Vector3 _initialVelocityCache { get; set; }
+        private bool _canMoveCache { get; set; }
+        private bool _movingCache { get; set; }
+
+        private void CacheValues()
+        {
+            _initialPositionCache = transform.position;
+            _initialVelocityCache = _rigidbody?.velocity ?? Vector3.zero;
+
+            _canMoveCache = canMove;
+            _movingCache = moving;
+        }
+
+        private void ResetFromCache()
+        {
+            canMove = _canMoveCache;
+            moving = _movingCache;
+
+            transform.position = _initialPositionCache;
+            if (_rigidbody) _rigidbody.velocity = _initialVelocityCache;
+        }
+        #endregion // CACHING
 
         #region PRIVATE_METHODS
         private void SetMoving(bool status)

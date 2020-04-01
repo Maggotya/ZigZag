@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameParameters
   m_EditorClassIdentifier: 
   _Ball:
-    _StartSpeed: 5
+    _StartSpeed: 10
     _Acceleration: 0
     _MinSpeed: 0
     _MaxSpeed: Infinity
@@ -23,7 +23,7 @@ MonoBehaviour:
   _Direction:
     _Directions: 0000000003000000
   _Difficulty:
-    _Current: 2
+    _Current: 1
     _StepWidth_Easy: 3
     _StepWidth_Medium: 2
     _StepWidth_Hard: 1

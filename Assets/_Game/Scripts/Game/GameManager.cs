@@ -60,11 +60,11 @@ namespace Assets._Game.Scripts.Game
             gameStarted = false;
             SaveGame();
 
-            _uiManager.LaunchResultView(_score.score, _saveManager.lastSave.bestScore);
-
+            _camera.enabled = false;
             _platformGenerator.SetActive(false);
             _ball.StopMove();
-            _camera.enabled = false;
+
+            _uiManager.LaunchResultView(_score.score, _saveManager.lastSave.bestScore);
         }
 
         public void SetPause(bool status)
@@ -80,7 +80,14 @@ namespace Assets._Game.Scripts.Game
         }
 
         public void Restart()
-            => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        {
+            _ball.Reset();
+            _score.Reset();
+            _platformGenerator.Reset();
+            _gemGenerator.Reset();
+
+            Initialize();
+        }
 
         public void Quit()
         {
@@ -89,10 +96,10 @@ namespace Assets._Game.Scripts.Game
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
-            #endregion // PUBLIC_METHODS
+        #endregion // PUBLIC_METHODS
 
-            #region PRIVATE_METHODS
-            private void Initialize()
+        #region PRIVATE_METHODS
+        private void Initialize()
         {
             gameStarted = false;
             gamePaused = false;
@@ -104,6 +111,7 @@ namespace Assets._Game.Scripts.Game
 
             _uiManager.LaunchStartView();
         }
+
         private void SaveGame()
         {
             if (_saveManager.lastSave.bestScore < _score.score)

@@ -37,6 +37,12 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Changer
 
             return _directionHandler.current;
         }
+
+        public void Reset()
+        {
+            _directionHandler.Reset();
+            _probabilitier.Reset();
+        }
         #endregion // PUBLIC_METHODS
     }
 }

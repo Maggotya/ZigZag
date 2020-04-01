@@ -67,7 +67,7 @@ namespace Assets._Game.Scripts.Instruments.Counter
         public int Dicrease()
             => SetCurrent(prev);
 
-        public int Reset()
+        public void Reset()
             => SetCurrent(start);
 
         public int SetCurrent(int value)

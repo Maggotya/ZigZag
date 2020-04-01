@@ -20,6 +20,11 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Calculator
         public int[] calculatedSteps => _preCalculatedPositions.Keys.ToArray();
         #endregion // PUBLIC_VALUES
 
+        #region CONSTS
+        private Vector3[] DEFAULT_START_POSITIONS => new Vector3[] { Vector3.zero };
+        private const int DEFAULT_LAST_STEP = 0;
+        #endregion // CONSTS
+
         ///////////////////////////////////////////////
 
         #region CONSTRUCTOR
@@ -29,8 +34,8 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Calculator
             _stepCalculator = stepCalculator;
             _lastStepDetector = lastStepDetector;
 
-            lastStep = 0;
-            _positionsOnLastStep = new Vector3[] { Vector3.zero };
+            lastStep = DEFAULT_LAST_STEP;
+            _positionsOnLastStep = DEFAULT_START_POSITIONS;
             _preCalculatedPositions = new Dictionary<int, Vector3[]>();
         }
         #endregion // CONSTRUCTOR
@@ -52,6 +57,16 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Calculator
                 _preCalculatedPositions.Remove(step);
         }
         #endregion // STEP_OEPRATIONS
+
+        #region RESET
+        public void Reset()
+        {
+            _preCalculatedPositions.Clear();
+
+            lastStep = DEFAULT_LAST_STEP;
+            _positionsOnLastStep = DEFAULT_START_POSITIONS;
+        }
+        #endregion // RESET
 
         #region PRECALCULATION_HANDLING
         public void CalculateNextStep(Vector3 prevDirection, Vector3 newDirection, int stepWidth)

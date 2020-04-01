@@ -42,6 +42,9 @@ namespace Assets._Game.Scripts.Game.Scoring
 
         public void SubtractScore()
             => _counter?.Dicrease();
+
+        public void Reset()
+            => _counter?.Reset();
         #endregion // PUBLIC_METHODS
     }
 }

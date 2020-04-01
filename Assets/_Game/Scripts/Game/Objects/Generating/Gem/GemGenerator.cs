@@ -49,6 +49,11 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
         }
         #endregion // INJECTS
 
+        #region MONO_BEHAVIOUR
+        private void Start()
+            => CacheValues();
+        #endregion // MONO_BEHAVIOUR
+
         #region PUBLIC_METHODS
         public void SetActive(bool status)
         {
@@ -67,7 +72,26 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
             var gem = ConfigureGem(_producer.Produce(), platform);
             _gems.Add(gem);
         }
+
+        public void Reset()
+        {
+            ResetFromCache();
+            _variator.Reset();
+
+            foreach (var gem in _gems)
+                if (gem.Equals(null) == false)
+                    gem.SetDestroyed();
+            _gems.Clear();
+        }
         #endregion // PUBLIC_METHODS
+
+        #region CACHE
+        private bool _active_Cache { get; set; }
+        private void CacheValues()
+            => _active_Cache = _Active;
+        private void ResetFromCache()
+            => _Active = _active_Cache;
+        #endregion // CACHE
 
         #region PRIVATE_METHODS
         private IGem ConfigureGem(IGem gem, IPlatform platform)

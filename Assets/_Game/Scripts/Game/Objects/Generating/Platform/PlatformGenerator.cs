@@ -47,6 +47,11 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform
 
         ///////////////////////////////////////////////////////////
 
+        #region MONO_BEHAVIOUR
+        private void Start()
+            => CacheValues();
+        #endregion // MONO_BEHAVIOUR
+
         #region PUBLIC_METHODS
         [Inject]
         public void Construct(IPlatformGeneratorParameters parameters, IDifficultyParameters difficulty, 
@@ -98,7 +103,30 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform
                 return;
             _Active = status;
         }
+
+        public void Reset()
+        {
+            ResetFromCache();
+            _direction.Reset();
+            _calculator.Reset();
+            _currentStep = default;
+            _silentMode = default;
+
+            foreach (var key in _platformsBySteps.Keys.ToArray())
+                foreach (var platform in _platformsBySteps[key])
+                    platform.SetDestroyed();
+
+            _platformsBySteps.Clear();
+        }
         #endregion // PUBLIC_METHODS
+
+        #region CACHING
+        private bool _active_Cache { get; set; }
+        private void CacheValues()
+            => _active_Cache = _Active;
+        private void ResetFromCache()
+            => _Active = _active_Cache;
+        #endregion // CACHING
 
         #region STEP_OPERATIONS
         private void SetCurrentStep(int currentStep)

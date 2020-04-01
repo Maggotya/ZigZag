@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets._Game.Scripts.Game.Objects.Interfaces;
+using UnityEngine;
 
 namespace Assets._Game.Scripts.Game.Objects.Generating.Platform.Calculator
 {
-    interface IPositionCalculator
+    interface IPositionCalculator : IResetable
     {
         int lastStep { get; }
         int[] calculatedSteps { get; }

@@ -31,6 +31,12 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem.Variator
 
             return result;
         }
+
+        public void Reset()
+        {
+            _counter.Reset();
+            _targetIndex.Reset();
+        }
         #endregion // PUBLIC_METHODS
 
         #region PRIVATE_METHODS

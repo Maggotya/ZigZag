@@ -12,6 +12,9 @@ namespace Assets._Game.Scripts.Game.Handlers.Probability
         public bool IsSuccess()
             => RandomValue() < successProbability;
 
+        public void Reset()
+        { }
+
         private float RandomValue()
             => Random.Range(0f, 100f);
     }
