@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4447151329515784109}
   - component: {fileID: 3522156543976985671}
   - component: {fileID: 3463837857347132226}
+  - component: {fileID: 868462448741230393}
   - component: {fileID: 4447151329515784110}
   - component: {fileID: 4447151329515784111}
   - component: {fileID: 4447151329515784080}
@@ -81,6 +82,18 @@ MonoBehaviour:
   _OnSurfaceExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &868462448741230393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447151329515784082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73973b3f14c45824b9a363f1658f5b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &4447151329515784110
 MeshFilter:
   m_ObjectHideFlags: 0

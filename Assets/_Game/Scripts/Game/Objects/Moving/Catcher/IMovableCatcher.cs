@@ -1,8 +1,9 @@
-﻿using UnityEngine.Events;
+﻿using Assets._Game.Scripts.Game.Objects.Reset;
+using UnityEngine.Events;
 
 namespace Assets._Game.Scripts.Game.Objects.Moving.Catcher
 {
-    interface IMovableCatcher
+    interface IMovableCatcher : IResetable
     {
         bool inContact { get; }
 

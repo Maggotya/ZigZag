@@ -1,6 +1,7 @@
 ﻿using Assets._Game.Scripts.Game.Objects.Ball;
 using Assets._Game.Scripts.Game.Objects.Generating.Gem;
 using Assets._Game.Scripts.Game.Objects.Generating.Platform;
+using Assets._Game.Scripts.Game.Objects.Reset;
 using Assets._Game.Scripts.Game.Save;
 using Assets._Game.Scripts.Game.Scoring;
 using Assets._Game.Scripts.UI.Manager;
@@ -78,10 +79,9 @@ namespace Assets._Game.Scripts.Game
 
         public void Restart()
         {
-            _ball.Reset();
-            _score.Reset();
-            _platformGenerator.Reset();
-            _gemGenerator.Reset();
+            foreach (var obj in FindObjectsOfType<GameObjectReseter>())
+                obj.Reset();
+
             _timeScale.Reset();
 
             Initialize();

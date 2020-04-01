@@ -54,6 +54,14 @@ namespace Assets._Game.Scripts.Game.Objects.Moving.Catcher
         }
         #endregion // MONO_BEHAVIOUR
 
+        #region RESET
+        public void Reset()
+        {
+            _movablesOnPlatform.Clear();
+            SetInContact(false);
+        }
+        #endregion // RESET
+
         #region MOVABLE_HANDLING
         private bool TryGetMovable(Collider collider, out IMovable movable)
             => ( movable = GetMovable(collider) ) != null;

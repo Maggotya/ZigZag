@@ -1,8 +1,9 @@
-﻿using UnityEngine.Events;
+﻿using Assets._Game.Scripts.Game.Objects.Reset;
+using UnityEngine.Events;
 
 namespace Assets._Game.Scripts.Game.Objects.Moving.Allower
 {
-    interface IMoveAllower
+    interface IMoveAllower : IResetable
     {
         bool allowed { get; }
         BoolUnityEvent onStatusChanged { get; }

@@ -79,6 +79,14 @@ namespace Assets._Game.Scripts.Game.Objects.Moving.Allower
             => !surface.Equals(null) && surface.allowMove;
         #endregion // SURFACE_HANDLING
 
+        #region RESET
+        public void Reset()
+        {
+            _movableSurfaces.Clear();
+            UpdateAllowance();
+        }
+        #endregion // RESET
+
         #region ALLOWANCE
         private void UpdateAllowance()
             => SetAllowed(_hasMovableSurfaces);
