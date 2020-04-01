@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Ball: {fileID: 4447151329515784082, guid: e8f2464aaabd20040856fc21f2428852, type: 3}
   _Gem: {fileID: 0}
-  _Platform: {fileID: 0}
+  _Platform: {fileID: 8750111351794710644, guid: 9fcd983364cc1564bb6a3ef92e196821,
+    type: 3}
