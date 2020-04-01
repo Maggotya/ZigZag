@@ -33,6 +33,7 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform
         private IPositionCalculator _calculator { get; set; }
 
         private int _currentStep { get; set; }
+        private bool _silentMode { get; set; }
         private Dictionary<int, IPlatform[]> _platformsBySteps;
         #endregion // PRIVATE_VALUES
 
@@ -62,7 +63,12 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Platform
 
         public void GenerateInitialPlatforms()
         {
+            // в silentMode не отсылаются уведомления о создании. Тем самым начальная активность
+            // не будет триггерить другие системы, в т.ч. генератор кристаллов.
+            _silentMode = true;
             CalculateFurtherSteps(_parameters.initialAreaSize, _parameters.initialAreaSize, true);
+            CreateFurtherPlatforms();
+            _silentMode = false;
 
             CalculateFurtherSteps(_parameters.initialStepsOneDirection, _difficulty.stepWidth, true);
 
