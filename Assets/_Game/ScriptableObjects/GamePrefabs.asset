@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fbd7e947759ba478beafbd6113b825, type: 3}
   m_Name: GamePrefabs
   m_EditorClassIdentifier: 
-  _Ball: {fileID: 0}
+  _Ball: {fileID: 4447151329515784082, guid: e8f2464aaabd20040856fc21f2428852, type: 3}
   _Gem: {fileID: 0}
   _Platform: {fileID: 0}
