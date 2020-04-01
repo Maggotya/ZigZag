@@ -13,6 +13,11 @@ namespace Assets._Game.Scripts.Game.Input
         [SerializeField] private UnityEvent _OnGameKeyPress;
         #endregion // SERIALIZE_FIELDS
 
+        #region PRIVATE_VALUES
+        private bool _canHandleTouch => _Config.changeByTouch && Input.touchSupported;
+        private bool _canHandleClick => _Config.changeByClick && !_canHandleTouch;
+        #endregion // PRIVATE_VALUES
+
         #region INJECTS
         [Inject] private IInputConfig _Config;
         #endregion // INJECTS
@@ -47,22 +52,30 @@ namespace Assets._Game.Scripts.Game.Input
 
         private void HandleMousePress()
         {
-            if (EventSystem.current?.IsPointerOverGameObject() == true)
+            if (_canHandleClick == false)
                 return;
 
-            if (_Config.changeByClick && Input.GetMouseButtonUp(0))
+            if (EventSystem.current?.IsPointerOverGameObject() == true || EventSystem.current?.currentSelectedGameObject != null) 
+                return;
+
+            if (Input.GetMouseButtonUp(0))
                 _OnGameKeyPress?.Invoke();
         }
 
         private void HandleTouchPress()
         {
-            var currentTouch = 0;
-
-            if (EventSystem.current?.IsPointerOverGameObject(currentTouch) == true)
+            if (_canHandleTouch == false)
                 return;
 
-            if (_Config.changeByTouch && Input.touchCount > 0 && Input.touches[currentTouch].phase.Equals(TouchPhase.Ended))
-                _OnGameKeyPress?.Invoke();
+            foreach (var touch in Input.touches) {
+                if (EventSystem.current?.IsPointerOverGameObject(touch.fingerId) == true || EventSystem.current?.currentSelectedGameObject != null)
+                    return;
+
+                if (touch.phase.Equals(TouchPhase.Ended)) {
+                    _OnGameKeyPress?.Invoke();
+                    return;
+                }
+            }
         }
         #endregion // PRIVATE_METHODS
 
