@@ -29,7 +29,7 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
 
         private void FixedUpdate()
         {
-            if (canMove && moving)
+            if (canMove)
                 UpdateVelocityState(Time.fixedDeltaTime);
         }
         #endregion // MONO_BEHAVIOUR
@@ -56,7 +56,6 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
         {
             SetMoving(false);
             _speedHandler.Reset();
-            UpdateVelocityState(0);
         }
 
         public void ChangeDirection()
@@ -129,8 +128,14 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
             if (_rigidbody == null)
                 return;
 
-            _rigidbody.velocity = _directionsHandler.current * _speedHandler.speed;
-            _speedHandler.IncreaseSpeed(deltaTime);
+            // в случае, когда шарик не движется, принудительно задаём ему нулевую скорость,
+            // чтобы погасить остаточные силы.
+            if (moving) {
+                _rigidbody.velocity = _directionsHandler.current * _speedHandler.speed;
+                _speedHandler.IncreaseSpeed(deltaTime);
+            }
+            else
+                _rigidbody.velocity = Vector3.zero;
         }
         #endregion // PRIVATE_METHODS
     }
