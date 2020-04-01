@@ -6,7 +6,6 @@ using Assets._Game.Scripts.Game.Scoring;
 using Assets._Game.Scripts.UI.Manager;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Assets._Game.Scripts.Game
@@ -22,6 +21,7 @@ namespace Assets._Game.Scripts.Game
         [Inject] private IUiManager _uiManager { get; set; }
         [Inject] private IScore _score { get; set; }
         [Inject] private ISaveManager _saveManager { get; set; }
+        [Inject] private ITimeScaleManager _timeScale { get; set; }
         #endregion // PRIVATE_VALUES
 
         #region PUBLIC_VALUES
@@ -29,10 +29,7 @@ namespace Assets._Game.Scripts.Game
         public bool gameStarted { get; private set; }
         #endregion // PUBLIC_VALUES
 
-        #region CONSTS
-        private const int PAUSED_SCALE = 0;
-        private const int UNPAUSED_SCALE = 1;
-        #endregion // CONSTS
+        //////////////////////////////////////////////
 
         #region MONO_BEHAVIOUR
         private void Start()
@@ -73,7 +70,7 @@ namespace Assets._Game.Scripts.Game
                 return;
 
             gamePaused = status;
-            Time.timeScale = status ? PAUSED_SCALE : UNPAUSED_SCALE;
+            _timeScale.EnableScale(!status);
 
             if (status) _uiManager.LaunchPauseView();
             else _uiManager.LaunchScoreView();
@@ -85,6 +82,7 @@ namespace Assets._Game.Scripts.Game
             _score.Reset();
             _platformGenerator.Reset();
             _gemGenerator.Reset();
+            _timeScale.Reset();
 
             Initialize();
         }
@@ -103,8 +101,8 @@ namespace Assets._Game.Scripts.Game
         {
             gameStarted = false;
             gamePaused = false;
-            Time.timeScale = UNPAUSED_SCALE;
 
+            _timeScale.Start();
             _camera.enabled = true;
             _platformGenerator.GenerateInitialPlatforms();
             _ball.SetPositionOnSurface(_platformGenerator.GetInitialPositionOn());
