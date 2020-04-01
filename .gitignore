@@ -1,0 +1,39 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Library/
+Match3Magic/
+MatchMagic/
+MatchMagic.app/
+Match3Magic.app/
+Assets/Pathes.dat
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db.meta
+.vs/Master/v15/Browse.VC.opendb
+.vs/
