@@ -12,6 +12,7 @@ namespace Assets._Game.Scripts.Installers
     class SceneObjectsInstaller : MonoInstaller
     {
         [SerializeField] private GameObject _Ball;
+        [SerializeField] private GameObject _VirtualCamera;
         [SerializeField] private GameObject _PlatformGenerator;
         [SerializeField] private GameObject _GemGenerator;
         [SerializeField] private GameObject _Score;
@@ -21,6 +22,7 @@ namespace Assets._Game.Scripts.Installers
             Container.Bind<IGemGenerator>().To<GemGenerator>().FromComponentOn(_GemGenerator).AsSingle();
             Container.Bind<IPlatformGenerator>().To<PlatformGenerator>().FromComponentOn(_PlatformGenerator).AsSingle();
             Container.Bind<IBall>().To<BallObject>().FromComponentOn(_Ball).AsSingle();
+            Container.Bind<CinemachineVirtualCamera>().FromComponentOn(_VirtualCamera).AsSingle();
             Container.Bind<IScore>().To<Score>().FromComponentOn(_Score).AsSingle();
         }
     }
