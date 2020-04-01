@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2868872963fe4a941977dac81b8e89b4, type: 3}
+  m_Name: GameParameters
+  m_EditorClassIdentifier: 
+  _Ball:
+    _StartSpeed: 5
+    _Acceleration: 0
+    _MinSpeed: 0
+    _MaxSpeed: Infinity
+  _Platform:
+    _Size: 2
+    _Thickness: 0.5
+  _Direction:
+    _Directions: 0000000003000000
+  _Difficulty:
+    _Current: 0
+    _StepWidth_Easy: 3
+    _StepWidth_Medium: 2
+    _StepWidth_Hard: 1
+  _PlatformGenerator:
+    _ProbailityChangeDirection: 40.5
+    _StepThresholdBack: 10
+    _StepsThresholdForward: 15
+    _InitialStepsOneDirection: 3
+    _InitialAreaSize: 3
+  _GemGenerator:
+    _PlatformsInBlock: 5
+    _PlacementType: 1
+  _Score:
+    _ScorePerGem: 1
