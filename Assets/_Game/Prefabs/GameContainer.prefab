@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2010833559221810887}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!108 &2010833558920764654
 Light:
@@ -123,7 +123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2010833559221810887}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2010833558953860507
 Camera:
@@ -238,6 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3676084904618361212}
+  - {fileID: 6738863863129487718}
   - {fileID: 2010833558953859684}
   - {fileID: 2010833558920764655}
   - {fileID: 2944708373580574764}
@@ -361,6 +362,63 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &5260841278365155401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6738863863129487718}
+  - component: {fileID: 6946890338612280883}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6738863863129487718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260841278365155401}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2010833559221810887}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6946890338612280883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260841278365155401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86f56f298e98144f80f048e21a51f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _OnChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1543257184183433089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,7 +469,7 @@ PrefabInstance:
     - target: {fileID: 4447151329515784109, guid: e8f2464aaabd20040856fc21f2428852,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4447151329515784109, guid: e8f2464aaabd20040856fc21f2428852,
         type: 3}
@@ -529,7 +587,7 @@ PrefabInstance:
     - target: {fileID: 7442473591769921369, guid: 4a9c19e623e3c834f81ce07cda945488,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7442473591769921369, guid: 4a9c19e623e3c834f81ce07cda945488,
         type: 3}
@@ -599,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 2584876588557377507, guid: a07f2e6672a27bc43b70fa021a17d7b5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2584876588557377507, guid: a07f2e6672a27bc43b70fa021a17d7b5,
         type: 3}
@@ -615,6 +673,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3350306279744457555, guid: a07f2e6672a27bc43b70fa021a17d7b5,
+        type: 3}
+      propertyPath: _OnCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6946890338612280883}
+    - target: {fileID: 3350306279744457555, guid: a07f2e6672a27bc43b70fa021a17d7b5,
+        type: 3}
+      propertyPath: _OnCollected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddScore
       objectReference: {fileID: 0}
     - target: {fileID: 5814888900030316910, guid: a07f2e6672a27bc43b70fa021a17d7b5,
         type: 3}
@@ -691,7 +759,7 @@ PrefabInstance:
     - target: {fileID: 2691722880687386641, guid: 72280121539081b4aa259493d0c55fa7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2691722880687386641, guid: 72280121539081b4aa259493d0c55fa7,
         type: 3}
