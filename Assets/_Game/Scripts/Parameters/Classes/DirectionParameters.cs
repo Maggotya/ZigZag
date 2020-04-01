@@ -9,7 +9,9 @@ namespace Assets._Game.Scripts.Parameters.Classes
     class DirectionParameters : IDirectionParameters
     {
         #region SERIZALZIE_FIELDS
-        [Tooltip("Доступные направления движения. Меняются поочерёдно. Ограничений в количестве нет. По умолчанию Forward и Right")]
+        [Tooltip("Доступные направления движения. Меняются поочерёдно. " +
+            "Ограничений в количестве нет, но лучше использовать два, т.к. код для обработки коллизий отсутствует. " +
+            "По умолчанию Forward и Right")]
         [SerializeField] private DirectionTypes[] _Directions;
         #endregion // SERIZALZIE_FIELDS
 
