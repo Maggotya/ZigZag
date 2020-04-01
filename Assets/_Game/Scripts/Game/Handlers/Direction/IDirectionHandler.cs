@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets._Game.ScriptsGame.Handlers.Direction
+namespace Assets._Game.Scripts.Game.Handlers.Direction
 {
     interface IDirectionHandler
     {

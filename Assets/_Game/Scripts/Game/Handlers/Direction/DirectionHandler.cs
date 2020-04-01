@@ -1,7 +1,7 @@
 ﻿using Assets._Game.Scripts.Instruments.Counter;
 using UnityEngine;
 
-namespace Assets._Game.ScriptsGame.Handlers.Direction
+namespace Assets._Game.Scripts.Game.Handlers.Direction
 {
     class DirectionHandler : IDirectionHandler
     {
