@@ -16,9 +16,6 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
         [Header("Attachments")]
         [SerializeField] private Transform _Container;
 
-        [Header("Config")]
-        [SerializeField] private bool _Active;
-
         [Header("Events")]
         [SerializeField] private UnityEvent _OnCollected;
         #endregion // SERIALIZE_FIELDS
@@ -30,7 +27,6 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
         #endregion // PRIVATE_VALUES
 
         #region PUBLIC_VALUES
-        public bool active => _Active;
         public UnityEvent onCollected {
             get => _OnCollected;
             set => _OnCollected = value;
@@ -49,22 +45,10 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
         }
         #endregion // INJECTS
 
-        #region MONO_BEHAVIOUR
-        private void Start()
-            => CacheValues();
-        #endregion // MONO_BEHAVIOUR
-
         #region PUBLIC_METHODS
-        public void SetActive(bool status)
-        {
-            if (_Active == status)
-                return;
-            _Active = status;
-        }
-
         public void TryGenerate(IPlatform platform)
         {
-            if (active == false || platform.Equals(null))
+            if (platform.Equals(null))
                 return;
             if (_variator.IsSuccess() == false)
                 return;
@@ -75,7 +59,6 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
 
         public void Reset()
         {
-            ResetFromCache();
             _variator.Reset();
 
             foreach (var gem in _gems)
@@ -84,14 +67,6 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
             _gems.Clear();
         }
         #endregion // PUBLIC_METHODS
-
-        #region CACHE
-        private bool _active_Cache { get; set; }
-        private void CacheValues()
-            => _active_Cache = _Active;
-        private void ResetFromCache()
-            => _Active = _active_Cache;
-        #endregion // CACHE
 
         #region PRIVATE_METHODS
         private IGem ConfigureGem(IGem gem, IPlatform platform)
@@ -112,8 +87,6 @@ namespace Assets._Game.Scripts.Game.Objects.Generating.Gem
 
         private void OnCollected(IGem booster)
         {
-            if (active == false)
-                return;
             if (booster.Equals(null))
                 return;
 
