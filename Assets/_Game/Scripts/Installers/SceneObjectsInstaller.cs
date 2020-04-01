@@ -16,6 +16,7 @@ namespace Assets._Game.Scripts.Installers
         [SerializeField] private GameObject _PlatformGenerator;
         [SerializeField] private GameObject _GemGenerator;
         [SerializeField] private GameObject _Score;
+        [SerializeField] private GameObject _UiManager;
 
         public override void InstallBindings()
         {
@@ -24,6 +25,7 @@ namespace Assets._Game.Scripts.Installers
             Container.Bind<IBall>().To<BallObject>().FromComponentOn(_Ball).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().FromComponentOn(_VirtualCamera).AsSingle();
             Container.Bind<IScore>().To<Score>().FromComponentOn(_Score).AsSingle();
+            Container.Bind<IUiManager>().To<UiManager>().FromComponentOn(_UiManager).AsSingle();
         }
     }
 }

@@ -3,6 +3,8 @@ using Assets._Game.Scripts.Game.Objects.Generating.Gem;
 using Assets._Game.Scripts.Game.Objects.Generating.Platform;
 using Assets._Game.Scripts.Game.Save;
 using Assets._Game.Scripts.Game.Scoring;
+using Assets._Game.Scripts.UI.Manager;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -13,9 +15,11 @@ namespace Assets._Game.Scripts.Game
     {
         #region PRIVATE_VALUES
         [Inject] private IBall _ball { get; set; }
+        [Inject] private CinemachineVirtualCamera _camera { get; set; }
         [Inject] private IPlatformGenerator _platformGenerator { get; set; }
         [Inject] private IGemGenerator _gemGenerator { get; set; }
 
+        [Inject] private IUiManager _uiManager { get; set; }
         [Inject] private IScore _score { get; set; }
         [Inject] private ISaveManager _saveManager { get; set; }
         #endregion // PRIVATE_VALUES
@@ -42,6 +46,7 @@ namespace Assets._Game.Scripts.Game
                 return;
 
             gameStarted = true;
+            _uiManager.LaunchScoreView();
 
             _platformGenerator.SetActive(true);
             _ball.StartMove();
@@ -55,8 +60,11 @@ namespace Assets._Game.Scripts.Game
             gameStarted = false;
             SaveGame();
 
+            _uiManager.LaunchResultView(_score.score, _saveManager.lastSave.bestScore);
+
             _platformGenerator.SetActive(false);
             _ball.StopMove();
+            _camera.enabled = false;
         }
 
         public void SetPause(bool status)
@@ -66,6 +74,9 @@ namespace Assets._Game.Scripts.Game
 
             gamePaused = status;
             Time.timeScale = status ? PAUSED_SCALE : UNPAUSED_SCALE;
+
+            if (status) _uiManager.LaunchPauseView();
+            else _uiManager.LaunchScoreView();
         }
 
         public void Restart()
@@ -78,17 +89,20 @@ namespace Assets._Game.Scripts.Game
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
         }
-        #endregion // PUBLIC_METHODS
+            #endregion // PUBLIC_METHODS
 
-        #region PRIVATE_METHODS
-        private void Initialize()
+            #region PRIVATE_METHODS
+            private void Initialize()
         {
             gameStarted = false;
             gamePaused = false;
             Time.timeScale = UNPAUSED_SCALE;
 
+            _camera.enabled = true;
             _platformGenerator.GenerateInitialPlatforms();
             _ball.SetPositionOnSurface(_platformGenerator.GetInitialPositionOn());
+
+            _uiManager.LaunchStartView();
         }
         private void SaveGame()
         {

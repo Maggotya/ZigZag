@@ -76,7 +76,7 @@ namespace Assets._Game.Scripts.Game.Objects.Moving.Allower
             => collision?.gameObject?.GetComponent<ISurfaceToMove>();
 
         private bool IsSurfaceAllowed(ISurfaceToMove surface)
-            => surface != null && surface.allowMove;
+            => !surface.Equals(null) && surface.allowMove;
         #endregion // SURFACE_HANDLING
 
         #region ALLOWANCE
