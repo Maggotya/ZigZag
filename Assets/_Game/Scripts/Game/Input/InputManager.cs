@@ -47,7 +47,7 @@ namespace Assets._Game.Scripts.Game.Input
 
         private void HandleMousePress()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (EventSystem.current?.IsPointerOverGameObject() == true)
                 return;
 
             if (_Config.changeByClick && Input.GetMouseButtonUp(0))
@@ -58,7 +58,7 @@ namespace Assets._Game.Scripts.Game.Input
         {
             var currentTouch = 0;
 
-            if (EventSystem.current.IsPointerOverGameObject(currentTouch))
+            if (EventSystem.current?.IsPointerOverGameObject(currentTouch) == true)
                 return;
 
             if (_Config.changeByTouch && Input.touchCount > 0 && Input.touches[currentTouch].phase.Equals(TouchPhase.Ended))
