@@ -17,6 +17,7 @@ namespace Assets._Game.Scripts.Game.Objects.Ball
         #endregion // PRIVATE_VALUES
 
         #region PUBLIC_VALUES
+        public Vector3 direction => _directionsHandler.current;
         public bool moving { get; private set; }
         public bool canMove { get; private set; }
         #endregion // PUBLIC_VALUES
