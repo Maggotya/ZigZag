@@ -3,9 +3,17 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "GameAssembly"
+        "GameAssembly",
+        "Zenject",
+        "Zenject-TestFramework",
+        "Cinemachine",
+        "Unity.TextMeshPro"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
