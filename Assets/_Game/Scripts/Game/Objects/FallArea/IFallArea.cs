@@ -7,6 +7,6 @@ namespace Assets._Game.Scripts.Game.Objects.FallArea
     public interface IFallArea : IGameObjectHost
     {
         GameObject objectMustFall { get; }
-        UnityEvent onObjectFallen { get; }
+        UnityEvent onObjectFallen { get; set; }
     }
 }
