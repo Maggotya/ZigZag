@@ -14,15 +14,15 @@ namespace Assets._Game.Scripts.Game
     class GameManager : MonoBehaviour, IGameManager
     {
         #region PRIVATE_VALUES
-        [Inject] private IBall _ball { get; set; }
-        [Inject] private CinemachineVirtualCamera _camera { get; set; }
-        [Inject] private IPlatformGenerator _platformGenerator { get; set; }
-        [Inject] private IGemGenerator _gemGenerator { get; set; }
-
-        [Inject] private IUiManager _uiManager { get; set; }
-        [Inject] private IScore _score { get; set; }
-        [Inject] private ISaveManager _saveManager { get; set; }
-        [Inject] private ITimeScaleManager _timeScale { get; set; }
+        [Inject] public IBall ball { get; private set; }
+        [Inject] public new CinemachineVirtualCamera camera { get; private set; }
+        [Inject] public IPlatformGenerator platformGenerator { get; private set; }
+        [Inject] public IGemGenerator gemGenerator { get; private set; }
+                 
+        [Inject] public IUiManager uiManager { get; private set; }
+        [Inject] public IScore score { get; private set; }
+        [Inject] public ISaveManager saveManager { get; private set; }
+        [Inject] public ITimeScaleManager timeScale { get; private set; }
         #endregion // PRIVATE_VALUES
 
         #region PUBLIC_VALUES
@@ -44,10 +44,10 @@ namespace Assets._Game.Scripts.Game
                 return;
 
             gameStarted = true;
-            _uiManager.LaunchScoreView();
+            uiManager.LaunchScoreView();
 
-            _platformGenerator.SetActive(true);
-            _ball.StartMove();
+            platformGenerator.SetActive(true);
+            ball.StartMove();
         }
 
         public void EndGame()
@@ -58,11 +58,11 @@ namespace Assets._Game.Scripts.Game
             gameStarted = false;
             SaveGame();
 
-            _camera.enabled = false;
-            _platformGenerator.SetActive(false);
-            _ball.StopMove();
+            camera.enabled = false;
+            platformGenerator.SetActive(false);
+            ball.StopMove();
 
-            _uiManager.LaunchResultView(_score.score, _saveManager.lastSave.bestScore);
+            uiManager.LaunchResultView(score.score, saveManager.lastSave.bestScore);
         }
 
         public void SetPause(bool status)
@@ -71,10 +71,10 @@ namespace Assets._Game.Scripts.Game
                 return;
 
             gamePaused = status;
-            _timeScale.EnableScale(!status);
+            timeScale.EnableScale(!status);
 
-            if (status) _uiManager.LaunchPauseView();
-            else _uiManager.LaunchScoreView();
+            if (status) uiManager.LaunchPauseView();
+            else uiManager.LaunchScoreView();
         }
 
         public void Restart()
@@ -82,7 +82,7 @@ namespace Assets._Game.Scripts.Game
             foreach (var obj in FindObjectsOfType<GameObjectReseter>())
                 obj.Reset();
 
-            _timeScale.Reset();
+            timeScale.Reset();
 
             Initialize();
         }
@@ -102,18 +102,18 @@ namespace Assets._Game.Scripts.Game
             gameStarted = false;
             gamePaused = false;
 
-            _timeScale.Start();
-            _camera.enabled = true;
-            _platformGenerator.GenerateInitialPlatforms();
-            _ball.SetPositionOnSurface(_platformGenerator.GetInitialPositionOn());
+            timeScale.Start();
+            camera.enabled = true;
+            platformGenerator.GenerateInitialPlatforms();
+            ball.SetPositionOnSurface(platformGenerator.GetInitialPositionOn());
 
-            _uiManager.LaunchStartView();
+            uiManager.LaunchStartView();
         }
 
         private void SaveGame()
         {
-            if (_saveManager.lastSave.bestScore < _score.score)
-                _saveManager.Save(_score.score);
+            if (saveManager.lastSave.bestScore < score.score)
+                saveManager.Save(score.score);
         }
         #endregion // PRIVATE_METHODS
     }
