@@ -1,11 +1,10 @@
-﻿using System.Text;
-using System.Threading.Tasks;
+﻿using Assets._Game.Scripts.Game.Objects.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets._Game.Scripts.Game.Objects.FallArea
 {
-    interface IFallArea
+    public interface IFallArea : IGameObjectHost
     {
         GameObject objectMustFall { get; }
         UnityEvent onObjectFallen { get; }

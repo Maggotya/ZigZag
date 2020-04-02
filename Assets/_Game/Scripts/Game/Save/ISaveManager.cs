@@ -1,7 +1,7 @@
 ﻿
 namespace Assets._Game.Scripts.Game.Save
 {
-    interface ISaveManager
+    public interface ISaveManager
     {
         SaveData lastSave { get; }
 

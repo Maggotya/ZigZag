@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Assets._Game.Scripts.Game.Objects.Generating.Platform
 {
-    interface IPlatformGenerator : IActive, IResetable
+    public interface IPlatformGenerator : IActive, IResetable
     {
         IPlatformUnityEvent onCreated { get; set; }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets._Game.Scripts.Game.Objects.Platform
 {
-    interface IPlatform : IRemoteDestroyable, IAnimated
+    public interface IPlatform : IRemoteDestroyable, IAnimated
     {
         bool isActive { get; }
         bool isUsing { get; }

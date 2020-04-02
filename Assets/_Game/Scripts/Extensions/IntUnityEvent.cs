@@ -3,7 +3,7 @@
 namespace UnityEngine.Events
 {
     [Serializable]
-    class IntUnityEvent : UnityEvent<int>
+    public class IntUnityEvent : UnityEvent<int>
     {
     }
 }

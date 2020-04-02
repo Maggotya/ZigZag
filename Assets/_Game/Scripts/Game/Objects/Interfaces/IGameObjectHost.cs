@@ -2,7 +2,7 @@
 
 namespace Assets._Game.Scripts.Game.Objects.Interfaces
 {
-    interface IGameObjectHost
+    public interface IGameObjectHost
     {
         GameObject gameObject { get; }
     }

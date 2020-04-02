@@ -1,7 +1,7 @@
 ﻿
 namespace Assets._Game.Scripts.Game.Objects.Interfaces
 {
-    interface IMovable
+    public interface IMovable
     {
         bool moving { get; }
         bool canMove { get; }

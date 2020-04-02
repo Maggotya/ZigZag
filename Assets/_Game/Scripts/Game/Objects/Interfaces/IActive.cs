@@ -1,7 +1,7 @@
 ﻿
 namespace Assets._Game.Scripts.Game.Objects.Interfaces
 {
-    interface IActive
+    public interface IActive
     {
         bool active { get; }
 

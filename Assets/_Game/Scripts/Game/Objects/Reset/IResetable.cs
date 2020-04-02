@@ -1,7 +1,7 @@
 ﻿
 namespace Assets._Game.Scripts.Game.Objects.Reset
 {
-    interface IResetable
+    public interface IResetable
     {
         void Reset();
     }

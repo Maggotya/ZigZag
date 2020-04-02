@@ -1,7 +1,7 @@
 ﻿
 namespace Assets._Game.Scripts.UI.Manager
 {
-    interface IUiManager
+    public interface IUiManager
     {
         void LaunchStartView();
         void LaunchScoreView();

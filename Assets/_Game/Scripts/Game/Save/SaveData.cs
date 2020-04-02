@@ -3,7 +3,7 @@
 namespace Assets._Game.Scripts.Game.Save
 {
     [Serializable]
-    class SaveData
+    public class SaveData
     {
         public int bestScore;
     }

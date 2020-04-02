@@ -2,7 +2,7 @@
 
 namespace Assets._Game.Scripts.Game
 {
-    interface IGameManager
+    public interface IGameManager
     {
         bool gamePaused { get; }
         bool gameStarted { get; }

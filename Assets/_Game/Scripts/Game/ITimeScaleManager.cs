@@ -2,7 +2,7 @@
 
 namespace Assets._Game.Scripts.Game
 {
-    interface ITimeScaleManager : IResetable
+    public interface ITimeScaleManager : IResetable
     {
         void Start();
         void Stop();
